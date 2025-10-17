@@ -1,0 +1,219 @@
+
+import React from "react";
+import { Link } from "react-router-dom";
+import { createPageUrl } from "@/utils";
+import { Button } from "@/components/ui/button";
+import {
+  Lightbulb,
+  Settings,
+  Zap,
+  Home,
+  Building2,
+  Wrench,
+  Shield,
+  Battery,
+  ArrowRight,
+  CheckCircle
+} from "lucide-react";
+import { motion } from "framer-motion";
+
+const services = [
+  {
+    icon: Lightbulb,
+    title: "Instalações Elétricas",
+    description: "Instalações elétricas completas para residências, comércios e indústrias",
+    features: [
+      "Projetos personalizados",
+      "Materiais certificados",
+      "Equipe especializada",
+      "Garantia estendida"
+    ],
+    color: "from-blue-500 to-blue-600"
+  },
+  {
+    icon: Settings,
+    title: "Manutenção Preventiva",
+    description: "Inspeções e manutenções regulares para máxima segurança",
+    features: [
+      "Inspeção completa",
+      "Relatórios detalhados",
+      "Agendamento flexível",
+      "Suporte prioritário"
+    ],
+    color: "from-yellow-500 to-orange-500"
+  },
+  {
+    icon: Zap,
+    title: "Projetos Elétricos",
+    description: "Desenvolvimento de projetos elétricos certificados",
+    features: [
+      "ART inclusa",
+      "Aprovação em concessionárias",
+      "Plantas técnicas",
+      "Memorial descritivo"
+    ],
+    color: "from-purple-500 to-purple-600"
+  },
+  {
+    icon: Home,
+    title: "Automação Residencial",
+    description: "Transforme sua casa em um ambiente inteligente",
+    features: [
+      "Iluminação automatizada",
+      "Controle por app",
+      "Economia de energia",
+      "Integração com assistentes"
+    ],
+    color: "from-green-500 to-emerald-600"
+  },
+  {
+    icon: Building2,
+    title: "Instalações Industriais",
+    description: "Soluções robustas para ambientes industriais",
+    features: [
+      "Alta potência",
+      "Normas de segurança",
+      "Manutenção programada",
+      "Equipe especializada"
+    ],
+    color: "from-red-500 to-red-600"
+  },
+  {
+    icon: Battery,
+    title: "Energia Solar",
+    description: "Sistemas fotovoltaicos completos e eficientes",
+    features: [
+      "Estudo de viabilidade",
+      "Instalação completa",
+      "Monitoramento remoto",
+      "ROI garantido"
+    ],
+    color: "from-amber-500 to-yellow-500"
+  },
+  {
+    icon: Shield,
+    title: "SPDA e Aterramento",
+    description: "Proteção contra descargas atmosféricas",
+    features: [
+      "Projeto técnico",
+      "Medição de aterramento",
+      "Certificação",
+      "Manutenção periódica"
+    ],
+    color: "from-cyan-500 to-blue-500"
+  },
+  {
+    icon: Wrench,
+    title: "Manutenção Corretiva",
+    description: "Atendimento rápido para emergências elétricas",
+    features: [
+      "Atendimento 24h",
+      "Diagnóstico preciso",
+      "Reparo imediato",
+      "Garantia do serviço"
+    ],
+    color: "from-orange-500 to-red-500"
+  }
+];
+
+export default function Services() {
+  return (
+    <div className="min-h-screen pt-20">
+      {/* Hero */}
+      <section className="gradient-primary py-24 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[var(--primary-gold)] rounded-full blur-[120px]" />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+              Nossos Serviços
+            </h1>
+            <div className="w-24 h-1 gradient-gold mx-auto mb-6" />
+            <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+              Soluções completas em engenharia elétrica com tecnologia de ponta e equipe altamente qualificada
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Services Grid */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.05 }}
+                className="group"
+              >
+                <div className="bg-[var(--gray-50)] rounded-2xl p-8 hover-lift h-full flex flex-col border border-gray-100">
+                  <div className={`w-16 h-16 bg-gradient-to-br ${service.color} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 gold-glow`}>
+                    <service.icon className="w-8 h-8 text-[var(--primary-gold)]" />
+                  </div>
+                  
+                  <h3 className="text-2xl font-bold text-[var(--primary-black)] mb-3">
+                    {service.title}
+                  </h3>
+                  
+                  <p className="text-[var(--gray-600)] leading-relaxed mb-6">
+                    {service.description}
+                  </p>
+
+                  <div className="space-y-3 mb-6 flex-grow">
+                    {service.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-center gap-2">
+                        <CheckCircle className="w-5 h-5 text-[var(--primary-gold)] flex-shrink-0" />
+                        <span className="text-sm text-[var(--gray-600)]">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <Link to={createPageUrl("Contact")}>
+                    <Button className="w-full gradient-gold text-[var(--primary-black)] hover:opacity-90 group font-semibold">
+                      Solicitar Orçamento
+                      <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </Link>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-24 bg-[var(--gray-50)]">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-[var(--primary-black)] mb-6">
+              Não Encontrou o Que Procura?
+            </h2>
+            <p className="text-xl text-[var(--gray-600)] mb-8 max-w-2xl mx-auto">
+              Entre em contato conosco para soluções personalizadas
+            </p>
+            <Link to={createPageUrl("Contact")}>
+              <Button size="lg" className="gradient-gold text-[var(--primary-black)] text-lg px-8 h-14 font-semibold gold-glow">
+                Falar com Especialista
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+    </div>
+  );
+}
