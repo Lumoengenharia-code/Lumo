@@ -1,0 +1,198 @@
+
+import React from "react";
+import { Link } from "react-router-dom";
+import { createPageUrl } from "@/utils";
+import { Button } from "@/components/ui/button";
+import {
+  Zap,
+  Shield,
+  Clock,
+  Award,
+  ArrowRight,
+  CheckCircle,
+  Lightbulb,
+  Settings,
+  Gauge,
+  Star,
+  Phone,
+  ChevronRight
+} from "lucide-react";
+import { motion } from "framer-motion";
+import HeroSection from "../components/home/HeroSection";
+import ServicesPreview from "../components/home/ServicesPreview";
+import StatsSection from "../components/home/StatsSection";
+import TestimonialsSection from "../components/home/TestimonialsSection";
+import CTASection from "../components/home/CTASection";
+
+export default function Home() {
+  return (
+    <div className="overflow-hidden">
+      <HeroSection />
+      <ServicesPreview />
+      <StatsSection />
+      
+      {/* Why Choose Us */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-4xl md:text-5xl font-bold text-[var(--primary-black)] mb-4">
+                Por Que Escolher a LUMO Engenharia?
+              </h2>
+              <div className="w-24 h-1 gradient-gold mx-auto mb-6" />
+              <p className="text-lg text-[var(--gray-600)] max-w-3xl mx-auto leading-relaxed">
+                Somos mais do que uma empresa de engenharia elétrica. Somos parceiros comprometidos 
+                em transformar seus projetos em realidade com excelência técnica, inovação e dedicação total.
+              </p>
+            </motion.div>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                icon: Shield,
+                title: "Segurança Total",
+                description: "Seguimos rigorosamente todas as normas técnicas brasileiras (NBR 5410, NBR 14039) e internacionais. Cada projeto passa por múltiplas inspeções de qualidade para garantir segurança absoluta."
+              },
+              {
+                icon: Clock,
+                title: "Atendimento Ágil 24/7",
+                description: "Emergências não esperam horário comercial. Nossa equipe está disponível 24 horas por dia, 7 dias por semana, para atender suas necessidades com rapidez e eficiência."
+              },
+              {
+                icon: Award,
+                title: "Qualidade Certificada",
+                description: "Utilizamos apenas materiais de fabricantes homologados e certificados. Todos os nossos serviços contam com garantia estendida e ART (Anotação de Responsabilidade Técnica)."
+              },
+              {
+                icon: Gauge,
+                title: "Tecnologia de Ponta",
+                description: "Investimos constantemente em equipamentos modernos e capacitação profissional. Nossas soluções são otimizadas para máxima eficiência energética e economia."
+              }
+            ].map((feature, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="group"
+              >
+                <div className="bg-[var(--gray-50)] rounded-2xl p-8 hover-lift h-full border border-gray-100">
+                  <div className="w-14 h-14 gradient-primary rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 gold-glow">
+                    <feature.icon className="w-7 h-7 text-[var(--primary-gold)]" />
+                  </div>
+                  <h3 className="text-xl font-bold text-[var(--primary-black)] mb-3">
+                    {feature.title}
+                  </h3>
+                  <p className="text-[var(--gray-600)] leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Additional Benefits */}
+          <div className="mt-16 bg-gradient-to-br from-gray-900 to-black rounded-3xl p-8 md:p-12 text-white">
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div>
+                <h3 className="text-3xl font-bold mb-6">Nosso Compromisso com Você</h3>
+                <div className="space-y-4">
+                  {[
+                    "Orçamentos transparentes sem taxas ocultas",
+                    "Projetos personalizados para suas necessidades específicas",
+                    "Equipe técnica altamente qualificada e certificada",
+                    "Acompanhamento completo do início ao fim do projeto",
+                    "Pós-venda com suporte técnico contínuo",
+                    "Compromisso com prazos e qualidade"
+                  ].map((item, index) => (
+                    <div key={index} className="flex items-start gap-3">
+                      <CheckCircle className="w-6 h-6 text-[var(--primary-gold)] flex-shrink-0 mt-0.5" />
+                      <span className="text-white/90">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="relative">
+                <div className="absolute inset-0 bg-[var(--primary-gold)] blur-3xl opacity-20" />
+                <div className="relative bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+                  <div className="text-center">
+                    <div className="text-6xl font-bold text-[var(--primary-gold)] mb-2">200+</div>
+                    <p className="text-xl mb-6">Clientes Satisfeitos</p>
+                    <p className="text-white/70 leading-relaxed">
+                      Construímos uma base sólida de clientes que confiam em nosso trabalho e 
+                      nos recomendam. Cada projeto é tratado com o mesmo cuidado e atenção aos detalhes.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <TestimonialsSection />
+
+      {/* Process Section */}
+      <section className="py-24 bg-[var(--gray-50)]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-4xl md:text-5xl font-bold text-[var(--primary-black)] mb-4">
+                Nosso Processo
+              </h2>
+              <div className="w-24 h-1 gradient-gold mx-auto mb-6" />
+              <p className="text-lg text-[var(--gray-600)] max-w-2xl mx-auto">
+                Do primeiro contato até a entrega final
+              </p>
+            </motion.div>
+          </div>
+
+          <div className="grid md:grid-cols-4 gap-8">
+            {[
+              { step: "01", title: "Contato", desc: "Entre em contato conosco" },
+              { step: "02", title: "Análise", desc: "Avaliamos sua necessidade" },
+              { step: "03", title: "Execução", desc: "Realizamos o serviço" },
+              { step: "04", title: "Entrega", desc: "Projeto finalizado" }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="relative"
+              >
+                <div className="text-center">
+                  <div className="inline-flex items-center justify-center w-20 h-20 rounded-full gradient-gold text-[var(--primary-black)] text-2xl font-bold mb-4 gold-glow">
+                    {item.step}
+                  </div>
+                  <h3 className="text-xl font-bold text-[var(--primary-black)] mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-[var(--gray-600)]">{item.desc}</p>
+                </div>
+                {index < 3 && (
+                  <ChevronRight className="hidden md:block absolute top-10 -right-4 text-[var(--primary-gold)] w-8 h-8" />
+                )}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <CTASection />
+    </div>
+  );
+}
